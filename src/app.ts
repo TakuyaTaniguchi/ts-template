@@ -1,24 +1,26 @@
-//template
-import {Item} from './item';
-import { isoParse } from 'd3';
-const elem = document.getElementById('output');
-const aBook = new Item('はじめてのTypeScript',110);
-aBook.say(elem);
-
-//c3
-
-import * as c3 from 'c3'
+import * as c3  from 'c3';
 
 let chart = c3.generate({
     bindto: '#chart',
     data: {
         type: 'donut',
         columns: [
-            ['いい感じ',50],
-            ['イマイチ',50]
+            ['良い感じ', 50],
+            ['ピンとこない', 50]
         ]
     },
     donut: {
-        title: 'Typescriptの印象は？'
+        title: 'TypeScriptの印象は？'
     }
-})
+});
+// ↓　　ここから下を追記
+setTimeout(() => {
+   chart.load({
+    columns: [
+        ['良い感じ', 30],
+        ['ピンとこない', 30],
+        ['最高', 30]
+    ]
+   });
+}, 3000);
+// ↑ ここまで追記
